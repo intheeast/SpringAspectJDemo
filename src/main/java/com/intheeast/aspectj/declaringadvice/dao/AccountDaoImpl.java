@@ -3,8 +3,11 @@ package com.intheeast.aspectj.declaringadvice.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.intheeast.aspectj.declaringadvice.model.Account;
 
+@Repository
 public class AccountDaoImpl implements AccountDao {
 	
 	private Map<String, Account> accounts =

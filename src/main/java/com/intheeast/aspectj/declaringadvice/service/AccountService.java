@@ -15,5 +15,7 @@ public interface AccountService {
 	void updateAccount(Account account);
 	
 	List<Account> findAccounts(String accountHolderNamePattern);
+	
+	List<Account> findAccountName(Account account);
 
 }

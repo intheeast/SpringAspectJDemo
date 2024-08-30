@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Auditable("accountUpdate")
 	@Override
-	public void updateAccount(Account account) {
+	public void updateAccount(Account account) throws IllegalArgumentException{
 
 		if (account.getBalance() < 0) {
 			throw new IllegalArgumentException("Account balance cannot be negative");
@@ -50,6 +50,11 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public List<Account> findAccounts(String accountHolderNamePattern) {
 		out.println("Finding accounts with pattern: " + accountHolderNamePattern);
+		return Arrays.asList(new Account("Sungwon Seo"), new Account("Sunghun Seo"));
+	}
+	
+	public List<Account> findAccountName(Account account) {
+		out.println("Finding accounts id: " + account.getId());
 		return Arrays.asList(new Account("Sungwon Seo"), new Account("Sunghun Seo"));
 	}
 
