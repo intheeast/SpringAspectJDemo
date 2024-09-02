@@ -34,6 +34,7 @@ public class AuditAspect {
 	@Pointcut("@annotation(auditable)")
 	public void methodWithAuditableAnnotation(Auditable auditable) {}
 	
+	// com.intheeast.aspectj.declaringadvice.annotation
 	@Pointcut("execution(* com.intheeast.aspectj.declaringadvice.service.*.*(..)) && "
 			+ "@args(com.intheeast.aspectj.declaringadvice.annotation.Auditable)")
 	public void methodWithAuditableArgs() {}
