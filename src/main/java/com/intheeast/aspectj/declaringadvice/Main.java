@@ -173,14 +173,39 @@ public class Main {
 		System.out.println("AccountService usage count: " + usageTracked.getUseCount());
 	}
 
+	public static void checkAspectInstantiationModels(
+			ApplicationContext context) {
+		SampleService sampleService1 = 
+				(SampleService) context.getBean("sampleService");
 		
+		MyType myTypeInstance1 = new MyType("ExampleName");
+		
+		sampleService1.sampleMethod("hello");
+		
+		sampleService1.sampleGenericMethod(myTypeInstance1);
+		
+		sampleService1.sampleGenericCollectionMethod(Arrays.asList(myTypeInstance1));
+		
+		SampleService sampleService2 = 
+				(SampleService) context.getBean("sampleService");
+		
+		MyType myTypeInstance2 = new MyType("ExampleName2");
+		
+		sampleService2.sampleMethod("world");
+		
+		sampleService2.sampleGenericMethod(myTypeInstance2);
+		
+		sampleService2.sampleGenericCollectionMethod(Arrays.asList(myTypeInstance2));
+	}
 
 	public static void main(String[] args) {
 		
 		ApplicationContext context =
 				new AnnotationConfigApplicationContext(AppConfig.class);
 		
-		checkIntroductionAspect(context);
+		checkAspectInstantiationModels(context);
+		
+//		checkIntroductionAspect(context);
 		
 //		checkAutomicThreadSafe(context);
 		

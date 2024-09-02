@@ -15,6 +15,7 @@ public class ExecutionCountingAspect {
 	// int a[전역변수] = 0;
 	// sleep(0);
 	// a = 10; // OS가 Thread에게 할당한 CPU Time Slice가 경과[만료]하면,,,
+	// Bad code...ExecutionCountingAspect Singleton Bean -> state 가지면 안됨..stateless.
 	private AtomicInteger executionCount = new AtomicInteger(0);
 	
 	@Around("execution(* com.intheeast.aspectj.declaringadvice.service.MyService.*(..))")
